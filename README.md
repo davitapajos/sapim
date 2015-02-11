@@ -7,8 +7,7 @@ Simple API Mock
 
 ## Install
 
-> npm install express
-> npm install body-parser
+> npm install express body-parser
 
 ---
 
