@@ -1,6 +1,11 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var app = express()
+var server = app.listen(3000, function () {
+  var host = server.address().address
+  var port = server.address().port
+  console.log('Listening at http://%s:%s', host, port)
+})
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -13,6 +18,7 @@ app.use('/', function(req, res, next) {
   next();
 });
 
+// ROUTES
 app.post('/users/login', function (req, res) {
   console.log("\n\n >>>>>>>>>>>>>>> POST");
   console.log(req.body);
@@ -35,12 +41,3 @@ app.post('/users/login', function (req, res) {
     });
   }
 });
-
-var server = app.listen(3000, function () {
-
-  var host = server.address().address
-  var port = server.address().port
-
-  console.log('Listening at http://%s:%s', host, port)
-
-})
